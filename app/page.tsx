@@ -1,65 +1,79 @@
-import Image from "next/image";
+'use client' // Indica que esto es lo que ve el usuario (React)
+
+import { useFormState } from 'react-dom';
+import { createReservation } from './actions'; // Importamos la lógica del servidor
+
+// Estado inicial del formulario
+const initialState = {
+  message: null,
+  success: false,
+};
 
 export default function Home() {
+  // Conectamos el formulario con la Server Action
+  const [state, formAction] = useFormState(createReservation, initialState);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-gray-50">
+      <div className="z-10 max-w-md w-full items-center justify-between font-mono text-sm bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        
+        <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">
+          Reservar Mesa
+        </h1>
+
+        <form action={formAction} className="flex flex-col gap-4">
+          
+          {/* Campo Nombre */}
+          <div className="flex flex-col gap-1">
+            <label className="font-semibold text-gray-600">Nombre</label>
+            <input 
+              name="nombre" 
+              type="text" 
+              placeholder="Ej: Juan Pérez"
+              required
+              className="p-2 border rounded-md border-gray-300 text-black bg-white focus:outline-none focus:ring-2 focus:ring-black"            />
+          </div>
+
+          {/* Campo Email */}
+          <div className="flex flex-col gap-1">
+            <label className="font-semibold text-gray-600">Email</label>
+            <input 
+              name="email" 
+              type="email" 
+              placeholder="tu@email.com"
+              required
+              className="p-2 border rounded-md border-gray-300 text-black bg-white focus:outline-none focus:ring-2 focus:ring-black"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          </div>
+
+          {/* Campo Fecha */}
+          <div className="flex flex-col gap-1">
+            <label className="font-semibold text-gray-600">Fecha y Hora</label>
+            <input 
+              name="fecha" 
+              type="datetime-local" 
+              required
+              className="p-2 border rounded-md border-gray-300 text-black bg-white focus:outline-none focus:ring-2 focus:ring-black"
+            />
+          </div>
+
+          {/* Botón de envío */}
+          <button 
+            type="submit"
+            className="mt-4 bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition-colors"
           >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            Confirmar Reserva
+          </button>
+
+          {/* Mensaje de respuesta (Feedback) */}
+          {state.message && (
+            <p className={`text-center mt-2 ${state.success ? 'text-green-600' : 'text-red-600'}`}>
+              {state.message}
+            </p>
+          )}
+
+        </form>
+      </div>
+    </main>
   );
 }
