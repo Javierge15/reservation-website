@@ -1,15 +1,8 @@
 # Sistema de Reservas para Restaurantes
 
-Un sistema de gestión de reservas simple construido con Next.js. Permite a los clientes solicitar una mesa y recibir una confirmación automática por correo electrónico.
+Un sistema de gestión de reservas. Permite a los clientes solicitar una mesa y recibir una confirmación automática por correo electrónico.
 
 ### [https://reservation-website-test.vercel.app/](https://reservation-website-test.vercel.app/)
-
-## Tecnologías
-
-![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 ## Funcionalidades
 
@@ -25,4 +18,7 @@ Un sistema de gestión de reservas simple construido con Next.js. Permite a los 
 * [ ] Panel de administración para el restaurante.
 * [ ] Enlace directo a WhatsApp para confirmaciones rápidas.
 
----
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white)](#)
+[![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?logo=vercel&logoColor=white)](#)
+[![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)](#)
