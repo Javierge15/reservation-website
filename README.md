@@ -2,8 +2,6 @@
 
 Un sistema de gestión de reservas. Permite a los clientes solicitar una mesa y recibir una confirmación automática por correo electrónico.
 
-### [https://reservation-website-test.vercel.app/](https://reservation-website-test.vercel.app/)
-
 ## Funcionalidades
 
 * Selección de fecha y hora mediante interfaz nativa.
